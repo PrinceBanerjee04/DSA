@@ -3,7 +3,7 @@
 
 void merge(int a[], int l1, int u1, int l2, int u2)
 {
-    int p, q, j, n;
+    int p, q, n;
     int d[100];
     p = l1;
     q = l2;
