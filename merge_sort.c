@@ -34,7 +34,7 @@ void mergesort(int a[], int lower, int upper)
     int mid;
     if (upper > lower)
     {
-        mid = (upper + lower) / 2; // Fix the parentheses here
+        mid = (upper + lower) / 2; 
         mergesort(a, lower, mid);
         mergesort(a, mid + 1, upper);
         merge(a, lower, mid, mid + 1, upper);
