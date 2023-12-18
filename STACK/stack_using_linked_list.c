@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define size 100
-
 typedef struct node
 {
     int data;
