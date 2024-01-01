@@ -31,3 +31,17 @@ node *create(int n)
     }
     return p;
 }
+
+// Printing the Double Circular Linked List
+void traverse(node *p)
+{
+    node *t;
+    t = p;
+    printf("Double Circular Linked List: \n");
+    do
+    {
+        printf("%d <-> ", p->data);
+        p = p->next;
+    } while (p != t);
+    printf("%d \n", t->data);
+}
