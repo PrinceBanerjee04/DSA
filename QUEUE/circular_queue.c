@@ -38,3 +38,19 @@ int deletecirq(queue *q)
         return 1; // Element deleted successfully
     }
 }
+
+void display(queue *q)
+{
+    if (q->front == -1 && q->rear == -1)
+    {
+        printf("Queue is Empty. Nothing to Display\n");
+        return;
+    }
+    int i = q->front;
+    do
+    {
+        printf("%d\n", q->arr[i]);
+        i = (i + 1) % size;
+    } while (i != (q->rear + 1) % size && i != q->front);
+    printf("\n");
+}
