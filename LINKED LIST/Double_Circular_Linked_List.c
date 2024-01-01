@@ -5,7 +5,7 @@ typedef struct node
 {
     int data;
     struct node *next;
-    struct node *prev; // New pointer to previous node
+    struct node *prev; 
 } node;
 
 // Creation of Double Circular Linked List
@@ -114,4 +114,55 @@ node *reverselist(node *p)
     } while (q != p);
 
     return q->prev; // Return the new head of the reversed list
+}
+
+int main()
+{
+    int n;
+    printf("Enter N: ");
+    scanf("%d", &n);
+    node *p = create(n);
+    printf("\nThe list is: \n");
+    traverse(p);
+    printf("\nEnter 1 to insert an element, 2 to delete an element,3 to reverse the list\n");
+    int choice;
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+    {
+        int pos;
+        printf("Enter the position to enter the element: ");
+        scanf("%d", &pos);
+        node *t = (node *)malloc(sizeof(node));
+        int new_data;
+        printf("Enter the data to be entered: ");
+        scanf("%d", &new_data);
+        t->data = new_data;
+        insertlist(&p, pos, t);
+        printf("\nList after insertion: \n");
+        traverse(p);
+    }
+    break;
+    case 2:
+    {
+        int pos;
+        printf("Enter the position to be deleted: ");
+        scanf("%d", &pos);
+        deletelist(&p, pos);
+        printf("\nList after deletion: \n");
+        traverse(p);
+    }
+    break;
+    case 3:
+    {
+        p = reverselist(p);
+        printf("\nReversed List : \n");
+        traverse(p);
+    }
+    break;
+    default:
+        printf("WRONG CHOICE!!!");
+    }
+    return 0;
 }
