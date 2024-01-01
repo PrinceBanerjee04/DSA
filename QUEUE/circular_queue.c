@@ -54,3 +54,45 @@ void display(queue *q)
     } while (i != (q->rear + 1) % size && i != q->front);
     printf("\n");
 }
+
+int main()
+{
+    queue q;
+    q.front = -1;
+    q.rear = -1;
+    int choice, element;
+    do
+    {
+        printf("\nQueue Operations:\n1. Enqueue 2. Dequeue 3. Display 4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter element to insert: ");
+            scanf("%d", &element);
+            if (addcirq(element, &q))
+                printf("Element %d added to queue.\n", element);
+            else
+                printf("Queue is full. Cannot insert element.\n");
+            break;
+        case 2:
+            if (deletecirq(&q))
+                printf("Element deleted from queue.\n");
+            else
+                printf("Queue is empty. Cannot delete element.\n");
+            break;
+        case 3:
+            display(&q);
+            break;
+        case 4:
+            printf("Exiting the program.\n");
+            exit(0);
+            break;
+        default:
+            printf("Invalid choice. Please try again.\n");
+            break;
+        }
+    } while (choice != 4);
+    return 0;
+}
