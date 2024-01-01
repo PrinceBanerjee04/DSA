@@ -45,3 +45,31 @@ void traverse(node *p)
     } while (p != t);
     printf("%d \n", t->data);
 }
+
+// Insertion of an element
+void insertlist(node **p, int i, node *t)
+{
+    int j;
+    node *q, *x;
+    if (i == 0)
+    {
+        t->next = *p;
+        t->prev = (*p)->prev; // Update previous node of t
+        (*p)->prev->next = t; // Update next of previous node of *p
+        (*p)->prev = t;        // Update previous of *p
+        *p = t;
+    }
+    else
+    {
+        q = *p;
+        for (j = 1; (j <= i) && (q->next != *p); j++)
+        {
+            x = q;
+            q = q->next;
+        }
+        t->next = x->next;
+        t->prev = x;           // Update previous of t
+        x->next->prev = t;     // Update previous of next node after x
+        x->next = t;           // Update next of x
+    }
+}
