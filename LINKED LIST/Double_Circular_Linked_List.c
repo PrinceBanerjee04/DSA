@@ -73,3 +73,45 @@ void insertlist(node **p, int i, node *t)
         x->next = t;           // Update next of x
     }
 }
+
+// Deletion of an element
+void deletelist(node **p, int i)
+{
+    int j;
+    node *y, *x;
+    y = *p;
+    if (i == 0)
+    {
+        (*p)->prev->next = (*p)->next; // Update next of previous node of *p
+        (*p)->next->prev = (*p)->prev; // Update previous of next node after *p
+        *p = (*p)->next;
+        free(y);
+    }
+    else
+    {
+        x = y->next;
+        for (j = 1; (j < i) && (x->next != *p); j++)
+        {
+            y = x;
+            x = x->next;
+        }
+        y->next = x->next;
+        x->next->prev = y; // Update previous of next node after x
+        free(x);
+    }
+}
+
+// Reversing a Double Circular Linked List
+node *reverselist(node *p)
+{
+    node *q = p;
+    do
+    {
+        node *temp = q->next;
+        q->next = q->prev;
+        q->prev = temp;
+        q = temp;
+    } while (q != p);
+
+    return q->prev; // Return the new head of the reversed list
+}
