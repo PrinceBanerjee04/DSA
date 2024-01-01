@@ -22,3 +22,19 @@ int addcirq(int a, queue *q)
         return 1; // Element added successfully
     }
 }
+
+int deletecirq(queue *q)
+{
+    if (q->rear == q->front)
+    {
+        // Queue is empty, reset front and rear
+        q->front = -1;
+        q->rear = -1;
+        return 0;
+    }
+    else
+    {
+        q->front = (q->front + 1) % size;
+        return 1; // Element deleted successfully
+    }
+}
